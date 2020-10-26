@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Urna Eletrônica</title>
+    <script>
+        alert("Coded By : Danilão Brabo e Douglas Oliveira")
+        function documento() {
+            let eleitor = prompt("Digite o nome do eleitor:");
+
+            let titulo = parseFloat(prompt("Digite o número do título de eleitor:"));
+
+            let municipio = prompt("Digite o município:");
+            alert("Olá " + eleitor);
+            alert("Seu titulo é" + titulo);
+            alert("Vote com consciencia Urna 4 Liberada");
+            }
+        
+        function relatorio() {
+            document.write("--------------Relatório---------------" + "</br>");
+            document.write("----------------------------------------" + "</br>");
+            document.write("Total de eleitores: " + numeleitores + "</br>");
+            document.write("</br>");
+            document.write("----------------------------------------" + "</br>");
+            document.write("Votos por candidato a vereador:" + "</br>");
+            document.write("</br>");
+            document.write("Número de votos para José: " + contjose + "</br>");
+            document.write("Número de votos para João: " + contjoao + "</br>");
+            document.write("Número de votos para Ana: " + contana + "</br>");
+            document.write("Número de votos nulos: " + contnulov + "</br>");
+            document.write("Número de votos em branco: " + contbrancov + "</br>");
+            
+
+
+            document.write("</br>");
+            if (contjose > contjoao > contana) {
+                document.write("José está em 1º lugar!" + "</br>");
+            } else if (contjoao > contana > contjose) {
+                document.write("João está em 1º lugar" + "</br>");
+            } else if (contana > contjose > contjoao) {
+                document.write("Ana está em 1º lugar!" + "</br>");
+            }else if (contjose = contjoao ){
+            document.write("Empate de Jose e joão ");
+            }else if(contjose = contana){
+                document.write("Empate de Jose e Ana")
+            }else if(contjoao = contana){
+                document.write("Empate de João e Ana")
+            }
+            
+
+            document.write("</br>");
+            document.write("----------------------------------------" + "</br>");
+            document.write("Votos por candidato a prefeito:" + "</br>");
+            document.write("</br>");
+            document.write("Número de votos para Manuel: " + contmanuel + "</br>");
+            document.write("Número de votos para Luiz: " + contluiz + "</br>");
+            document.write("Número de votos nulos: " + contnulop + "</br>");
+            document.write("Número de votos em branco: " + contbrancop + "</br>");
+            document.write("</br>");
+            if (contmanuel > contluiz) {
+                document.write("Manuel ta em Primeiro Lugar" + "<br>")
+            } else if (contluiz > contmanuel) {
+                document.write("Luiz esta em Primeiro " + "<br>");
+            }else if (contluiz = contmanuel){
+                document.write("Empate entre de luiz e manuel" + "<br>")
+            }else if (contmanuel = contluiz){
+                document.write("Empate de Manuel e Luiz" + "<br>");
+            }
+            document.write("----------------------------------------" + "</br>");
+            document.write("Haverá segundo turno de qualquer jeito!!!" + "</br>");
+            document.write("----------------------------------------" + "</br>");
+            document.write("<br>");
+
+
+        }
+
+    </script>
+</head>
+<!-- Coded By Danilão brabo e Douglas Oliveira  -->
+
+<body>
+    <script>
+        var numeleitores = 0;
+        var contjose = 0;
+        var contjoao = 0;
+        var contana = 0;
+        var contmanuel = 0;
+        var contluiz = 0;
+        var contnulov = 0;
+        var contnulop = 0;
+        var contbrancov = 0;
+        var contbrancop = 0;
+        var i = 0;
+        var quantvotos;
+        var nulo = 0;
+        var urna = confirm("Proximo eleitor?");
+        while (urna == true) {
+            documento();
+            var numeleitores = numeleitores + 1;
+            var votos_v = parseInt(prompt("Digite o número do candidato a vereador:\n10300 - José\n20100 - João\n30200 - Ana\n0 - Voto em branco \nQualquer número - Voto nulo"));
+            switch (votos_v) {
+                case 10300:
+                    alert("Você votou em José.");
+                    var contjose = contjose + 1;
+                    break;
+                case 20100:
+                    alert("Você votou em João.");
+                    var contjoao = contjoao + 1;
+                    break;
+                case 30200:
+                    alert("Você votou em Ana.");
+                    var contana = contana + 1;
+                    break;
+                case 0:
+                    alert("Você votou em branco.");
+                    var contbrancov = contbrancov + 1;
+                    break;
+                default:
+                    alert("Você votou nulo.");
+                    var contnulov = contnulov + 1;
+                    break;
+            }
+            var votos_p = parseInt(prompt("Digite o número do candidato a prefeito:\n10 - Manuel\n20 - Luiz\n0 - Voto em branco \nQualquer número - Voto nulo"));
+            switch (votos_p) {
+                case 10:
+                    alert("Você votou em Manuel.");
+                    var contmanuel = contmanuel + 1;
+                    break;
+                case 20:
+                    alert("Você votou em Luiz.");
+                    var contluiz = contluiz + 1;
+                    break;
+                case 0:
+                    alert("Você votou em branco.");
+                    var contbrancop = contbrancop + 1;
+                    break;
+                default:
+                    alert("Você votou nulo.");
+                    var contnulop = contnulop + 1;
+                    break;
+            }
+            alert("FIM!")
+            var urnafinal = confirm("Deseja finalizar o processo de votação?");
+            if (urnafinal == true) {
+                var senha = parseInt(prompt("Por favor, insira a senha:"));
+                while (senha != 12174) {
+                    alert("A senha está errada! Tente novamente!");
+                    var senha = parseInt(prompt("Por favor, insira a senha:"));
+                }
+                relatorio();
+                break;
+            } else {
+                var urna = confirm("Proximo eleitor?");
+            }
+        }
+        if (urna == false) {
+            alert("O processo será cancelado!");
+            var senha = parseInt(prompt("Por favor, insira a senha:"));
+            while (senha != 12174) {
+                alert("A senha está errada! Tente novamente!");
+                var senha = parseInt(prompt("Por favor, insira a senha:"));
+            }
+            relatorio();
+            dadosdoeleitor();
+            fraude();
+
+        }
+    </script>
+</body>
+
+</html>
